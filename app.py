@@ -14,6 +14,59 @@ def hello_world():
 def hello_name(name):
     return jsonify({'message': 'Hello, ' + name + '!'})
 
+### Define a new route that accepts two numbers as parameters
+### Ensure that the parameters are converted to integers
+@app.route('/add/<x>/<y>', methods=['GET'])
+def add(x, y):
+    ### Convert the parameters to integers and handle the ValueError if the conversion fails
+    try:
+        x = int(x)
+        y = int(y)
+    except ValueError:
+        return jsonify({'message': 'Invalid parameters'}), 400
+    return jsonify({'result': x + y})
+
+### Define a new route that accepts two numbers as parameters
+### Ensure that the parameters are converted to integers
+@app.route('/subtract/<x>/<y>', methods=['GET'])
+def subtract(x, y):
+    ### Convert the parameters to integers and handle the ValueError if the conversion fails
+    try:
+        x = int(x)
+        y = int(y)
+    except ValueError:
+        return jsonify({'message': 'Invalid parameters'}), 400
+    return jsonify({'result': x - y})
+
+### Write new routes to pass the tests in test_app.py
+### Write a new route that accepts two numbers as parameters
+### Ensure that the parameters are converted to integers
+@app.route('/multiply/<x>/<y>', methods=['GET'])
+def multiply(x, y):
+    ### Convert the parameters to integers and handle the ValueError if the conversion fails
+    try:
+        x = int(x)
+        y = int(y)
+    except ValueError:
+        return jsonify({'message': 'Invalid parameters'}), 400
+    return jsonify({'result': x * y})
+
+### Write a new route that accepts two numbers as parameters
+### Ensure that the parameters are converted to integers
+@app.route('/divide/<x>/<y>', methods=['GET'])
+def divide(x, y):
+    ### Convert the parameters to integers and handle the ValueError if the conversion fails
+    try:
+        x = int(x)
+        y = int(y)
+    except ValueError:
+        return jsonify({'message': 'Invalid parameters'}), 400
+    ### Handle the ZeroDivisionError if the denominator is zero
+    try:
+        return jsonify({'result': x / y})
+    except ZeroDivisionError:
+        return jsonify({'message': 'Invalid parameters'}), 400
+
 # Run the app
 if __name__ == '__main__':
     app.run()
