@@ -100,5 +100,13 @@ class TestAPI(unittest.TestCase):
             app.run()
             mock_run.assert_called_once()
 
+### Write a test for the root endpoint that returns the following string: "https://github.com/jcleigh/python-api-ai-assisted"
+    def test_root(self):
+        response = self.app.get('/')
+        data = response.get_data(as_text=True)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(data, 'https://github.com/jcleigh/python-api-ai-assisted')            
+
 if __name__ == '__main__':
     unittest.main()

@@ -66,8 +66,12 @@ def divide(x, y):
         return jsonify({'result': x / y})
     except ZeroDivisionError:
         return jsonify({'message': 'Invalid parameters'}), 400
+    
+### The root route should return the following: "https://github.com/jcleigh/python-api-ai-assisted"    
+@app.route('/', methods=['GET'])
+def index():
+    return jsonify('https://github.com/jcleigh/python-api-ai-assisted')
 
 # Run the app
 if __name__ == '__main__':
     app.run()
-
