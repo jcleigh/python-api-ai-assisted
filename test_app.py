@@ -1,6 +1,7 @@
 # test_app.py
 
 import unittest
+from unittest import mock
 from app import app
 
 class TestAPI(unittest.TestCase):
@@ -85,6 +86,19 @@ class TestAPI(unittest.TestCase):
         data = response.get_json()
         self.assertEqual(response.status_code, 400)
         self.assertEqual(data['message'], 'Invalid parameters')
-    
+
+### Now test the error handling for division by zero for the division endpoint.
+    def test_div3(self):
+        response = self.app.get('/divide/1/0')
+        data = response.get_json()
+        self.assertEqual(response.status_code, 400)
+        self.assertEqual(data['message'], 'Invalid parameters')  
+
+### Write unit tests to cover the app.run() statement at the bottom of app.py. You will need to use the mock library to mock the app.run() statement.
+    def test_app_run(self):
+        with mock.patch('app.app.run') as mock_run:
+            app.run()
+            mock_run.assert_called_once()
+
 if __name__ == '__main__':
     unittest.main()
