@@ -70,7 +70,7 @@ def divide(x, y):
 ### The root route should return the following: "https://github.com/jcleigh/python-api-ai-assisted"    
 @app.route('/', methods=['GET'])
 def index():
-    return jsonify('https://github.com/jcleigh/python-api-ai-assisted')
+    return 'https://github.com/jcleigh/python-api-ai-assisted'
 
 # Run the app
 if __name__ == '__main__':
